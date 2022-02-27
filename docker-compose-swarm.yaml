@@ -1,17 +1,17 @@
 version: "3.8"
 services:
     web:
-        image: rkrastev/bgapp-web
+        image: rkrastev/bgapp-nginx-php-web
         deploy:
             replicas: 5
         ports:
             - 8080:80
         volumes:
-            - "${PROJECT_ROOT}:/var/www/html:ro"
+            - "${PROJECT_ROOT}:/var/www/bgapp"
         networks:
             - app-network
     db:
-        image: rkrastev/bgapp-db
+        image: rkrastev/bgapp-nginx-php-db
         networks:
             - app-network
         environment:
